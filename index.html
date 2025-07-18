@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edberth Academy | Physics & Computer Science Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50; /* Deep blue */
+            --secondary: #8e44ad; /* Purple */
+            --accent: #3498db; /* Sky blue */
+            --white: #fff;
+            --light-bg: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #7d3c98;
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .qualifications {
+            margin: 25px 0;
+        }
+        
+        .qualifications li {
+            margin-bottom: 10px;
+            list-style: none;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .qualifications i {
+            margin-right: 10px;
+            color: var(--secondary);
+            margin-top: 3px;
+        }
+        
+        .expertise-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .expertise-list li {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .expertise-list i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+        
+        /* Services */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-card ul {
+            margin-bottom: 20px;
+        }
+        
+        .service-card li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-card li:before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background: var(--light-bg);
+            text-align: center;
+        }
+        
+        .contact h2 {
+            margin-bottom: 30px;
+        }
+        
+        .contact p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .expertise-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/27678788668" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">⚛️💻</div>
+                <div class="logo-text">
+                    <h1>Edberth Academy <span>| Physics & CS</span></h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Master Physics & Computer Science</h1>
+                <p>Join lessons from an experienced educator specializing in making complex concepts accessible.</p>
+                <a href="https://wa.me/27678788668" class="btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">Who is  Edberth E. Mbanga?</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="PROFILE.jpg"> 
+                </div>
+                <div class="about-text">
+                    <h3>Passionate Physics & Computer Science Educator</h3>
+                    <p>I'm a dedicated educator specializing in Physics and Computer Science with a hands-on approach to teaching. My mission is to simplify complex concepts and make learning both engaging and practical.</p>
+                    
+                    <p>Throughout my academic journey, I have focused on:</p>
+                    
+                    <ul class="qualifications">
+                        <li><i class="fas fa-book"></i> Writing easy-to-understand textbooks</li>
+                        <li><i class="fas fa-laptop"></i> Creating digital learning content</li>
+                        <li><i class="fas fa-globe"></i> Developing educational website and School results systems</li>
+                        <li><i class="fas fa-flask"></i> Designing interactive lesson plans and science activities</li>
+                        <li><i class="fas fa-code"></i> Building ICT solutions and Science projects</li>
+                    </ul>
+                    
+                    <h4>Areas of Expertise:</h4>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check"></i> Physics Instruction</li>
+                        <li><i class="fas fa-check"></i> ICT & Computer Fundamentals</li>
+                        <li><i class="fas fa-check"></i> Web Design & Development</li>
+                        <li><i class="fas fa-check"></i> E-learning Content Creation</li>
+                        <li><i class="fas fa-check"></i> Student Mentorship</li>
+                        <li><i class="fas fa-check"></i> MS Office Suite Mastery</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/27678788668" class="btn" target="_blank">
+                        <i class="fas fa-comment"></i> Discuss Your Learning Needs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Teaching Services</h2>
+            <div class="services-grid">
+                <!-- Physics Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Physics Instruction</h3>
+                    <ul>
+                        <li>Private tutoring (online & in-person)</li>
+                        <li>Exam paper setting & marking (A-Levels & O-Levels)</li>
+                        <li>Physics textbooks & study guides</li>
+                        <li>Lab experiment design & Science projects design</li>
+                        <li>Academic mentorship</li>
+                    </ul>
+                </div>
+                
+                <!-- Computer Science Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Computer Science Instruction</h3>
+                    <ul>
+                        <li>Private tutoring (online & in-person)</li>
+                        <li>Exam paper setting & marking (A-Levels & O-Levels)</li>
+                        <li>Computer science textbooks & study guides</li>
+                        <li>Emerging technologies</li>
+                        <li>Ms Office (Excel,Word,Power Point)</li>
+                    </ul>
+                </div>
+                
+                <!-- Teaching Methods Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Learning Formats</h3>
+                    <ul>
+                        <li>One-on-one online sessions</li>
+                        <li>In-person tutoring (local students)</li>
+                        <li>Customized lesson plans</li>
+                        <li>Interactive digital tools</li>
+                        <li>Flexible scheduling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Begin Your Learning Journey?</h2>
+            <p>Contact me directly on WhatsApp to discuss your educational needs and schedule your first session.</p>
+            <a href="https://wa.me/27678788668" class="btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Message Me Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="https://wa.me/27678788668" target="_blank">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2023 Edberth Academy. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
